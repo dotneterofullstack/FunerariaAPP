@@ -1,0 +1,58 @@
+<h1>Paquetes</h1>
+<div ng-show="estadoVista == $root.EstadoVistaEnum.Edicion || estadoVista == $root.EstadoVistaEnum.Agregado">
+    <h5 ng-show="estadoVista == $root.EstadoVistaEnum.Agregado">Nuevo Paquete</h5>
+    <h5 ng-show="estadoVista == $root.EstadoVistaEnum.Edicion ">Editar Paquete</h5>
+    <form novalidate name="frmPaquete">
+        <input type="hidden" ng-model="paquete.Id">
+        <label for="Descripcion">Paquete</label>
+        <input type="text" name="Descripcion" ng-model="paquete.Descripcion" required maxlength="200">
+        <label for="Precio">Precio</label>
+        <input type="number" name="Precio" ng-model="paquete.Precio" required>
+        <label for="Comision">Comisión</label>
+        <input type="number" name="Comision" ng-model="paquete.Comision" required>
+        <label for="SoloCremacion">Sólo Cremación</label>
+        <input type="checkbox" name="SoloCremacion" ng-model="paquete.SoloCremacion">
+        <input type="button" value="Cancelar" ng-click="cancel()">
+        <input type="button" value="Guardar" ng-disabled="frmPaquete.$invalid" ng-click="save(paquete)">
+    </form>
+</div>
+<div ng-show="estadoVista == $root.EstadoVistaEnum.Listado">
+    <a ng-click="add()">Nuevo</a>
+    <form novalidate name="frmFiltro">
+        <table>
+            <thead>
+                <tr>
+                    <th hidden="hidden">ID</th>
+                    <th>Paquete</th>
+                    <th>Precio</th>
+                    <th>Comisión</th>
+                    <th>Sólo Cremación</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th hidden="hidden"></th>
+                    <th><input type="text" name="Descripcion" ng-model="pqtFilter.Descripcion" /></th>
+                    <th><input type="number" name="Precio" ng-model="pqtFilter.Precio" /></th>
+                    <th><input type="number" name="Comision" ng-model="pqtFilter.Comision" /></th>
+                    <th colspan="2">
+                        <button ng-click="filter(pqtFilter)">Filtrar</button>
+                        <button ng-click="reset()">Mostrar Todos</button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="paq in paqueteData">
+                    <td hidden="hidden">{{ paq.Id }}</td>
+                    <td>{{ paq.Descripcion }}</td>
+                    <td>{{ paq.Precio }}</td>
+                    <td>{{ paq.Comision }}</td>
+                    <td>{{ paq.SoloCremacion }}</td>
+                    <td>
+                        <a ng-click="edit(paqueteData[$index])">Editar</a>
+                        <a ng-click="delete($index)">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
