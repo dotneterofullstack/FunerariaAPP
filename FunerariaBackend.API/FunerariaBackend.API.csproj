@@ -167,10 +167,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1FunerariaBackend.BL\FunerariaBackend.BL.csproj">
-      <Project>{07eb76dc-73f6-4f95-9870-be71c7056d6c}</Project>
-      <Name>FunerariaBackend.BL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FunerariaBackend.DAL\FunerariaBackend.DAL.csproj">
       <Project>{4e7f1e60-3ebc-41ca-a7ee-d821ce471af0}</Project>
       <Name>FunerariaBackend.DAL</Name>
