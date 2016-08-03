@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunerariaBackend.DAL", "FunerariaBackend.DAL\FunerariaBackend.DAL.csproj", "{4E7F1E60-3EBC-41CA-A7EE-D821CE471AF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1FunerariaBackend.BL", "ClassLibrary1FunerariaBackend.BL\ClassLibrary1FunerariaBackend.BL.csproj", "{07EB76DC-73F6-4F95-9870-BE71C7056D6C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunerariaBackend.BL", "ClassLibrary1FunerariaBackend.BL\FunerariaBackend.BL.csproj", "{07EB76DC-73F6-4F95-9870-BE71C7056D6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunerariaBackend.API", "FunerariaBackend.API\FunerariaBackend.API.csproj", "{9654042D-FE03-4139-8BF9-62E7C3DA76EC}"
 EndProject

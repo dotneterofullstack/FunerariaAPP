@@ -7,8 +7,8 @@
     <ProjectGuid>{07EB76DC-73F6-4F95-9870-BE71C7056D6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary1FunerariaBackend.BL</RootNamespace>
-    <AssemblyName>ClassLibrary1FunerariaBackend.BL</AssemblyName>
+    <RootNamespace>FunerariaBackend.BL</RootNamespace>
+    <AssemblyName>FunerariaBackend.BL</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
