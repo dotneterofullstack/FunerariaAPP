@@ -30,23 +30,23 @@
                     <th></th>
                 </tr>
                 <tr>
-                    <th hidden="hidden"></th>
-                    <th><input type="text" name="Descripcion" ng-model="pqtFilter.Descripcion" /></th>
-                    <th><input type="number" name="Precio" ng-model="pqtFilter.Precio" /></th>
-                    <th><input type="number" name="Comision" ng-model="pqtFilter.Comision" /></th>
-                    <th colspan="2">
+                    <td hidden="hidden"></td>
+                    <td><input type="text" name="Descripcion" ng-model="pqtFilter.Descripcion" /></td>
+                    <td><input type="number" name="Precio" ng-model="pqtFilter.Precio" /></td>
+                    <td><input type="number" name="Comision" ng-model="pqtFilter.Comision" /></td>
+                    <td colspan="2">
                         <button ng-click="filter(pqtFilter)">Filtrar</button>
                         <button ng-click="reset()">Mostrar Todos</button>
-                    </th>
+                    </td>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="paq in paqueteData">
                     <td hidden="hidden">{{ paq.Id }}</td>
                     <td>{{ paq.Descripcion }}</td>
-                    <td>{{ paq.Precio }}</td>
-                    <td>{{ paq.Comision }}</td>
-                    <td>{{ paq.SoloCremacion }}</td>
+                    <td>{{ paq.Precio | currency : "$" : 2 }}</td>
+                    <td>{{ paq.Comision | currency : "$" : 2 }}</td>
+                    <td>{{ (paq.SoloCremacion ? "Si" : "No" ) }}</td>
                     <td>
                         <a ng-click="edit(paqueteData[$index])">Editar</a>
                         <a ng-click="delete($index)">Eliminar</a>
