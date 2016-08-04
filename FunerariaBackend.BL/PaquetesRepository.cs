@@ -61,16 +61,16 @@ namespace FunerariaBackend.BL
 
         public bool Update(IModel model)
         {
-            Paquete paq = (Paquete)model;
+            Paquete updatedPaquete = (Paquete)model;
 
-            var pqt = (from p in context.Paquetes
-                       where p.Id == paq.Id
+            var originalPaquete = (from p in context.Paquetes
+                       where p.Id == updatedPaquete.Id
                        select p).Single();
 
-            pqt.Descripcion = paq.Descripcion;
-            pqt.Precio = paq.Precio;
-            pqt.Comision = paq.Comision;
-            pqt.SoloCremacion = paq.SoloCremacion;
+            originalPaquete.Descripcion = updatedPaquete.Descripcion;
+            originalPaquete.Precio = updatedPaquete.Precio;
+            originalPaquete.Comision = updatedPaquete.Comision;
+            originalPaquete.SoloCremacion = updatedPaquete.SoloCremacion;
             context.SaveChanges();
 
             return true;
