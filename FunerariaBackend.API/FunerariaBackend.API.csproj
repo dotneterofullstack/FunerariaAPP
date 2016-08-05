@@ -120,6 +120,8 @@
     <Content Include="WebSite\assets\js\app.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="WebSite\assets\js\modules\cargos\controllers.js" />
+    <Content Include="WebSite\assets\js\modules\cargos\services.js" />
     <Content Include="WebSite\assets\js\modules\paquetes\controllers.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -132,6 +134,7 @@
     <Content Include="WebSite\assets\partials\catalogos\paquetes.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="WebSite\assets\partials\catalogos\cargos.html" />
     <Content Include="WebSite\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

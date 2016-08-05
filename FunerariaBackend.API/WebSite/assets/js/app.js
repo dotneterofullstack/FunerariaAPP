@@ -21,9 +21,15 @@
                     templateUrl: "assets/partials/catalogos/paquetes.html",
                     controller: "paquetesCtl"
                 })
+
+                .state("catalogos.cargos", {
+                    url: "/cargo",
+                    templateUrl: "assets/partials/catalogos/cargos.html",
+                    controller: "cargoCtl"
+                })
     }])
 
-    .run(["$rootScope", 
+    .run(["$rootScope",
         function($rootScope) {
             $rootScope.Configuracion = {
                 RutaApi: "../api/"
