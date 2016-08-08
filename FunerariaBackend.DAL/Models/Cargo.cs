@@ -32,6 +32,8 @@ namespace FunerariaBackend.DAL.Models
             return Id == 0 &&
                 Nombre == string.Empty;
         }
+
+        public List<Persona> Personas { get; set; }
     }
 }
 

@@ -21,6 +21,8 @@ namespace FunerariaBackend.DAL.Models
             get;
             set;
         }
+
+        public List<Asesor> Asesors { get; set; }
     }
 }
 

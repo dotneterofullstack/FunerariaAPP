@@ -61,13 +61,17 @@
     <Compile Include="FS\PaquetesCsvReader.cs" />
     <Compile Include="FS\TiposTelefonoCsvReader.cs" />
     <Compile Include="Init\FunerariaDbInitializer.cs" />
+    <Compile Include="Models\Asesor.cs" />
     <Compile Include="Models\Cargo.cs" />
     <Compile Include="Models\Documento.cs" />
+    <Compile Include="Models\Domicilio.cs" />
     <Compile Include="Models\Estado.cs" />
     <Compile Include="Models\IFilter.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\Municipio.cs" />
     <Compile Include="Models\Paquete.cs" />
+    <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\Telefono.cs" />
     <Compile Include="Models\TipoTelefono.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

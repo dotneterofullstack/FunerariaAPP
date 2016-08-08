@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CargosRepository.cs" />
+    <Compile Include="DocumentosRepository.cs" />
     <Compile Include="EstadosRepository.cs" />
     <Compile Include="IReaderRepository.cs" />
     <Compile Include="IWriterRepositury.cs" />
