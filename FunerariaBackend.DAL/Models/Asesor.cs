@@ -16,6 +16,7 @@ namespace FunerariaBackend.DAL.Models
 
         [Required(AllowEmptyStrings =false)]
         [Index(IsUnique = true)]
+        [MaxLength(10)]
         public string Codigo { get; set; }
 
         [ForeignKey("IdCargo")]
@@ -30,9 +31,19 @@ namespace FunerariaBackend.DAL.Models
         public List<Documento> Documentos { get; set; }
 
 
-        public Asesor()
+        public Asesor() : base()
         {
-            
+            IdCargo = 0;
+            IdReferidoPor = null;
+            Codigo = string.Empty;
+        }
+
+        public override bool EstaVacio()
+        {
+            return base.EstaVacio() &&
+                    IdCargo == 0 &&
+                    IdReferidoPor == null &&
+                    Codigo == string.Empty;
         }
     }
 }

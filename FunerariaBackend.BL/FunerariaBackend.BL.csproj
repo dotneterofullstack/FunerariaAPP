@@ -49,11 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsesoresRepository.cs" />
     <Compile Include="CargosRepository.cs" />
     <Compile Include="DocumentosRepository.cs" />
     <Compile Include="EstadosRepository.cs" />
     <Compile Include="IReaderRepository.cs" />
-    <Compile Include="IWriterRepositury.cs" />
+    <Compile Include="IWriterRepository.cs" />
     <Compile Include="MunicipiosRepository.cs" />
     <Compile Include="PaquetesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

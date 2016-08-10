@@ -6,7 +6,7 @@ using FunerariaBackend.DAL.DAO;
 
 namespace FunerariaBackend.BL
 {
-    public class CargosRepository : IReaderRepository, IWriterRepositury
+    public class CargosRepository : IReaderRepository, IWriterRepository
     {
         FunerariaDbContext context;
         public CargosRepository(string conStr)

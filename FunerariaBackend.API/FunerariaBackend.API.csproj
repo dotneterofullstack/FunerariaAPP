@@ -122,6 +122,10 @@
     </Content>
     <Content Include="WebSite\assets\js\modules\cargos\controllers.js" />
     <Content Include="WebSite\assets\js\modules\cargos\services.js" />
+    <Content Include="WebSite\assets\js\modules\estados\services.js" />
+    <Content Include="WebSite\assets\js\modules\municipios\services.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="WebSite\assets\js\modules\paquetes\controllers.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -147,7 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AsesorController.cs" />
     <Compile Include="Controllers\CargosController.cs" />
+    <Compile Include="Controllers\DocumentosController.cs" />
     <Compile Include="Controllers\EstadosController.cs" />
     <Compile Include="Controllers\PaquetesController.cs" />
     <Compile Include="Global.asax.cs">

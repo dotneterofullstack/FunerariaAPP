@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FunerariaBackend.DAL.Models
 {
     [Table("Documentos")]
-    public class Documento : IModel
+    public class Documento : IModel, IFilter
     {
         public int Id
         {
@@ -23,6 +23,18 @@ namespace FunerariaBackend.DAL.Models
         }
 
         public List<Asesor> Asesors { get; set; }
+
+        public Documento()
+        {
+            Id = 0;
+            Nombre = String.Empty;
+        }
+
+        public bool EstaVacio()
+        {
+            return Id == 0 &&
+                Nombre == String.Empty;
+        }
     }
 }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FunerariaBackend.DAL.Models
 {
-    public abstract class Persona: IModel
+    public abstract class Persona: IModel, IFilter
     {
         public int Id { get; set; }
 
@@ -29,5 +29,22 @@ namespace FunerariaBackend.DAL.Models
 
         public List<Telefono> Telefonos { get; set; }
         public List<Domicilio> Domicilios { get; set; }
-}
+
+        public Persona()
+        {
+            Id = 0;
+            Nombre = string.Empty;
+            ApellidoPaterno = string.Empty;
+            ApellidoMaterno = string.Empty;
+            RFC = string.Empty;
+        }
+        public virtual bool EstaVacio()
+        {
+            return Id == 0 &&
+                Nombre == string.Empty &&
+                ApellidoPaterno == string.Empty &&
+                ApellidoMaterno == string.Empty &&
+                RFC == string.Empty;
+        }
+    }
 }

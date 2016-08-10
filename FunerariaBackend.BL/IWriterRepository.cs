@@ -4,7 +4,7 @@ using FunerariaBackend.DAL.Models;
 
 namespace FunerariaBackend.BL
 {
-    public interface IWriterRepositury
+    public interface IWriterRepository
     {
         bool Update(IModel model);
         bool Delete(int id);
