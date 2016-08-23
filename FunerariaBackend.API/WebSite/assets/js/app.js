@@ -23,9 +23,15 @@
                 })
 
                 .state("catalogos.cargos", {
-                    url: "/cargo",
+                    url: "/cargos",
                     templateUrl: "assets/partials/catalogos/cargos.html",
                     controller: "cargoCtl"
+                })
+                
+                .state("catalogos.asesores", {
+                    url: "/asesores",
+                    templateUrl: "assets/partials/catalogos/asesores.html",
+                    controller: "asesoresCtl"
                 })
     }])
 

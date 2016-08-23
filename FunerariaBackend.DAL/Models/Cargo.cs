@@ -21,7 +21,6 @@ namespace FunerariaBackend.DAL.Models
             get;
             set;
         }
-
         public Cargo()
         {
             Id = 0;

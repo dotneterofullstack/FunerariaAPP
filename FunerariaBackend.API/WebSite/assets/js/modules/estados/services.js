@@ -12,10 +12,7 @@
 
         var service = {
             setApiUrl: setApiUrl,
-            get:get,
-            post:post,
-            put:put,
-            del:del
+            get:get
         };
         
         return service;
@@ -26,22 +23,22 @@
          }
 
         function get(filter) { 
-            return $http.get(apiUrl + "estados", {
+            return $http.get(apiUrl, {
                     params: filter,
                     cache: true
                 });
         }
 
-        function post(entity) {
-            return $http.post(apiUrl + "estados", entity);
-        }
+        //function post(entity) {
+        //    return $http.post(apiUrl, entity);
+        //}
 
-        function put(entity) {
-            return $http.put(apiUrl + "estados", entity);
-        }
+        //function put(entity) {
+        //    return $http.put(apiUrl, entity);
+        //}
 
-        function del(id) {
-            return $http.delete(apiUrl + "estados/" + id);
-        }
+        //function del(id) {
+        //    return $http.delete(apiUrl + "/" + id);
+        //}
     }
 })();

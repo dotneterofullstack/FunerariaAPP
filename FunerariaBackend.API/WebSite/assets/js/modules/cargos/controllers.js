@@ -96,7 +96,7 @@
             $scope.estadoVista = $rootScope.EstadoVistaEnum.Listado;
             cargoSvc.get().then(function (response) {
                 $scope.AllCargos = response.data;
-            })
+            });
         }
     }
 })();

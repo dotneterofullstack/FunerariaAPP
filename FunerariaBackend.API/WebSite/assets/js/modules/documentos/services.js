@@ -3,12 +3,12 @@
 
     angular
         .module('funerariaApp')
-        .factory('municipiosSvc', municipiosSvc);
+        .factory('documentosSvc', documentosSvc);
 
-    municipiosSvc.$inject = ['$http'];
-    function municipiosSvc($http) {
+    documentosSvc.$inject = ['$http'];
+    function documentosSvc($http) {
         var apiUrl
-        var municipios = [];
+        var domicilios = [];
 
         var service = {
             setApiUrl: setApiUrl,

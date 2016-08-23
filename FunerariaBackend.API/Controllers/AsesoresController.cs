@@ -9,10 +9,10 @@ using System.Web.Http;
 
 namespace FunerariaBackend.API.Controllers
 {
-    public class AsesorController : ApiController
+    public class AsesoresController : ApiController
     {
         AsesoresRepository repo;
-        public AsesorController()
+        public AsesoresController()
         {
             repo = new AsesoresRepository("name=FunerariappDbEntities");
         }

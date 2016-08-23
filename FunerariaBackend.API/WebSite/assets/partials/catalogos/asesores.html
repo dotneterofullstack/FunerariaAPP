@@ -1,0 +1,191 @@
+﻿ <h1>Asesores</h1>
+<div ng-show="estadoVista == $root.EstadoVistaEnum.Edicion || estadoVista == $root.EstadoVistaEnum.Agregado">
+    <h5 ng-show="estadoVista == $root.EstadoVistaEnum.Agregado">Nuevo</h5>
+    <h5 ng-show="estadoVista == $root.EstadoVistaEnum.Edicion ">Editar</h5>
+    <form novalidate name="frmEntity">
+        <!-- Aqui van imputs para la captura de un nuevo Asesor -->
+        <input type="hidden" ng-model="Asesor.Id">
+        <label for="Codigo">Código</label>
+        <input type="text" name="Codigo" ng-model="Asesor.Codigo" required maxlength="10">
+        <label for="Nombre">Nombre</label>
+        <input type="text" name="Nombre" ng-model="Asesor.Nombre" required maxlength="100">
+        <label for="ApellidoPaterno">Apellido Paterno</label>
+        <input type="text" name="ApellidoPaterno" ng-model="Asesor.ApellidoPaterno" required maxlength="100">
+        <label for="ApellidoMaterno">Apellido Materno</label>
+        <input type="text" name="ApellidoMaterno" ng-model="Asesor.ApellidoMaterno" required maxlength="100">
+        <label for="RFC">R. F. C.</label>
+        <input type="text" name="RFC" ng-model="Asesor.RFC" required maxlength="13">
+        <label for="IdCargo">Cargo</label>
+        <select required name="IdCargo" id="IdCargo" ng-model="Asesor.IdCargo">
+            <option ng-repeat="cargo in Cargos" value="{{ cargo.ID }}">{{ cargo.Nombre }}</option>
+        </select>
+        <label for="IdReferidoPor">Referido por:</label>
+        <select required
+                name="IdReferidoPor" id="IdReferidoPor" ng-model="Asesor.IdReferidoPor">
+            <option value="0">Sin Invitación</option>
+            <option ng-repeat="asesor in asesores" value="{{ asesor.ID }}">{{ asesor.Nombre + " " + asesor.ApellidoPat + " " + asesor.ApellidoMat }}</option>
+        </select>
+    </form>
+    <form novalidate name="frmDirecciones">
+        <table>
+            <caption>Direcciones</caption>
+            <thead>
+                <tr>
+                    <th hidden="hidden"></th>
+                    <th>Calle</th>
+                    <th>No. Exterior</th>
+                    <th>No. Interior</th>
+                    <th>Entre Calles</th>
+                    <th>Colonia</th>
+                    <th>Código Postal</th>
+                    <th>Estado</th>
+                    <th>Municipio</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td hidden="hidden"></td>
+                    <td>
+                        <input maxlength="200" required type="text" id="Calle" ng-model="domicilio.Calle" name="Calle">
+                    </td>
+                    <td>
+                        <input required type="number" id="NumeroExterior" ng-model="domicilio.NumeroExterior" name="NumeroExterior">
+                    </td>
+                    <td>
+                        <input required type="text" id="NumeroInterior" ng-model="domicilio.NumeroInterior" name="NumeroInterior">
+                    </td>
+                    <td>
+                        <input type="text" id="EntreCalles" ng-model="domicilio.EntreCalles" name="EntreCalles">
+                    </td>
+                    <td>
+                        <input maxlength="400" required type="text" id="Colonia" ng-model="domicilio.Colonia" name="Colonia">
+                    </td>
+                    <td>
+                        <input required maxlength="10" type="text" id="CodigoPostal" ng-model="domicilio.CodigoPostal" name="CodigoPostal">
+                    </td>
+                    <td>
+                        <select name="IdEstado" id="IdEstado" ng-model="IdEstado"
+                                ng-change="obtenerMunicipios(IdEstado)">
+                            <option ng-repeat="estado in estados" value="{{ estado.Id }}">{{ estado.Nombre }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select required name="IdMunicipio" id="IdMunicipio" ng-model="domicilio.IdMunicipio">
+                            <option ng-repeat="municipio in municipios" value="{{ municipio.Id }}">{{ municipio.Nombre }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button ng-click="agregarDomicilio(domicilio)" ng-disabled="frmDomicilio.$invalid">
+                            Agregar Domicilio
+                        </button>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="domicilio in Asesor.Domicilios">
+                    <th hidden="hidden"></th>
+                    <td>{{ domicilio.Calle }}</td>
+                    <td>{{ domicilio.NumeroExterior }}</td>
+                    <td>{{ domicilio.NumeroInterior }}</td>
+                    <td>{{ domicilio.EntreCalles }}</td>
+                    <td>{{ domicilio.Colonia }}</td>
+                    <td>{{ domicilio.CodigoPostal }}</td>
+                    <td>{{ domicilio.CodigoPostal }}</td>
+                    <td>{{ (todosMunicipios | filter: {ID: domicilio.IdMunicipio })[0].Nombre }}</td>
+                    <td>
+                        <a class="btn btn-default btn-xs"
+                           ng-click="eliminaDomicilio($index)">Quitar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <table>
+        <caption>Documentos Proporcionados</caption>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Entregado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="documento in documentos">
+                <td>{{ documento.Nombre }}</td>
+                <td>
+                    <input type="checkbox" name="documentoSeleccionado[]"
+                           value="{{ documento.Id }}"
+                           ng-checked="documentosSeleccionados.indexOf(documento) > -1"
+                           ng-click="cambiarSeleccionDocumento(documento)">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <form novalidate name="frmGuardar">
+        <input type="button" value="Cancelar" ng-click="cancel()">
+        <input type="button" value="Guardar" ng-disabled="frmEntity.$invalid" ng-click="save(Asesor)">
+    </form>
+</div>
+<div ng-show="estadoVista == $root.EstadoVistaEnum.Listado">
+    <a ng-click="add()">Nuevo</a>
+    <form novalidate name="frmFiltro">
+        <table>
+            <thead>
+                <tr>
+                    <!-- Encabezados del grid de Entities -->
+                    <th hidden="hidden">Id</th>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>R. F. C.</th>
+                    <th>Cargo</th>
+                    <th>Referido Por:</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td hidden="hidden"><input type="hidden" ng-model="AsesorFilter.Id"></td>
+                    <td><input type="text" name="Codigo" ng-model="AsesorFilter.Codigo" maxlength="10"></td>
+                    <td><input type="text" name="Nombre" ng-model="AsesorFilter.Nombre" maxlength="100"></td>
+                    <td><input type="text" name="ApellidoPaterno" ng-model="AsesorFilter.ApellidoPaterno" maxlength="100"></td>
+                    <td><input type="text" name="ApellidoMaterno" ng-model="AsesorFilter.ApellidoMaterno" maxlength="100"></td>
+                    <td><input type="text" name="RFC" ng-model="AsesorFilter.RFC" maxlength="13"></td>
+                    <td>
+                        <select required name="IdCargo" id="IdCargo" ng-model="AsesorFilter.IdCargo">
+                            <option value="0">Cualquier Cargo</option>
+                            <option ng-repeat="cargo in Cargos" value="{{ cargo.ID }}">{{ cargo.Nombre }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select required
+                                name="IdReferidoPor" id="IdReferidoPor" ng-model="AsesorFilter.IdReferidoPor">
+                            <option value="-1">Cualquier Asesor</option>
+                            <option value="0">Sin Invitación</option>
+                            <option ng-repeat="asesor in asesores" value="{{ asesor.ID }}">{{ asesor.Nombre + " " + asesor.ApellidoPat + " " + asesor.ApellidoMat }}</option>
+                        </select>
+                    </td>
+                    
+                    <!-- Imputs de filtrado de Entities -->
+                    <td colspan="2">
+                        <button ng-click="filter(AsesorFilter)">Filtrar</button>
+                        <button ng-click="reset()">Mostrar Todos</button>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="asesor in allAsesores">
+                    <td hidden="hidden">{{ asesor.Id }}</td>
+                    <td>{{ asesor.Codigo }}</td>
+                    <td>{{ asesor.Nombre }}</td>
+                    <td>{{ asesor.ApellidoPaterno }}</td>
+                    <td>{{ asesor.ApellidoMaterno }}</td>
+                    <td>{{ asesor.RFC }}</td>
+                    <td>{{ asesor.IdCargo }}</td>
+                    <td>{{ asesor.IdReferidoPor }}</td>
+                    <td>
+                        <a ng-click="edit(allAsesores[$index])">Editar</a>
+                        <a ng-click="delete($index)">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

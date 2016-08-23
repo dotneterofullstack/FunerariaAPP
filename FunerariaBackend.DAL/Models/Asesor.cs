@@ -12,7 +12,7 @@ namespace FunerariaBackend.DAL.Models
     {
         [Required]
         public int IdCargo { get; set; }
-        public int? IdReferidoPor { get; set; }
+        public int? IdReferidoPor { get; set; } 
 
         [Required(AllowEmptyStrings =false)]
         [Index(IsUnique = true)]

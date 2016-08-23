@@ -46,7 +46,7 @@ namespace FunerariaBackend.BL
                     (asesorFilter.ApellidoMaterno == String.Empty || asesores.ApellidoMaterno.Contains(asesorFilter.ApellidoMaterno)) &&
                     (asesorFilter.RFC == String.Empty || asesores.RFC.Contains(asesorFilter.RFC)) &&
                     (asesorFilter.IdCargo == 0 || asesores.IdCargo == asesorFilter.IdCargo) &&
-                    (asesorFilter.IdReferidoPor == null || asesores.IdReferidoPor == asesorFilter.IdReferidoPor) &&
+                    (asesorFilter.IdReferidoPor == -1 || (asesorFilter.IdReferidoPor == 0 ? asesores.IdReferidoPor == null : asesores.IdReferidoPor == asesorFilter.IdReferidoPor)) &&
                     (asesorFilter.Codigo == String.Empty || asesores.Codigo.Contains(asesorFilter.Codigo))
                     select asesores).ToList();
             
